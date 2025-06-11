@@ -1,0 +1,7 @@
+#!/bin/sh
+mount -t proc none /proc
+mount -t sysfs none /sys
+echo "[*] CyberSecX INIT OK!"
+mode=$(cat /proc/cmdline | grep -oP 'cybersecx.mode=\K\w+')
+echo "[*] Mode Detected: $mode"
+exec /bin/init_"$mode".sh
